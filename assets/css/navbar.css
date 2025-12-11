@@ -1,0 +1,339 @@
+/**
+ * Navbar Styles - Persistent Navigation Bar
+ * Applied to all pages for consistent user experience
+ */
+
+:root {
+  --navbar-bg: #212529;
+  --navbar-text: #e0e0e0;
+  --navbar-active: #4caf50;
+  --navbar-hover: #55c85f;
+  --navbar-border: #404040;
+  --navbar-dropdown-bg: #2d2d2d;
+  --transition-speed: 0.3s;
+}
+
+/* Main Navbar Container */
+.navbar {
+  z-index: 1000 !important;
+}
+
+.navbar.bg-dark {
+  background-color: linear-gradient(
+    135deg,
+    var(--navbar-bg) 0%,
+    #1a1d21 100%
+  ) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Brand/Logo Styling */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff !important;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand:hover {
+  color: var(--navbar-active) !important;
+  transform: scale(1.05);
+}
+
+.navbar-brand i {
+  font-size: 1.5rem;
+  color: var(--navbar-active);
+}
+
+/* Navigation Links */
+.nav-link {
+  color: var(--navbar-text) !important;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem !important;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link:hover {
+  color: var(--navbar-active) !important;
+}
+
+.nav-link.active {
+  color: var(--navbar-active) !important;
+  font-weight: 500;
+}
+
+/* Active Link Underline */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: var(--navbar-active);
+  border-radius: 1px;
+  animation: slideIn var(--transition-speed) ease;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Dropdown Menu */
+.dropdown-menu.dropdown-menu-dark {
+  background-color: var(--navbar-dropdown-bg) !important;
+  border: 1px solid var(--navbar-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu-dark .dropdown-item {
+  color: var(--navbar-text);
+  transition: all var(--transition-speed) ease;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+  background-color: var(--navbar-border);
+  color: var(--navbar-active);
+  padding-left: 1.75rem;
+}
+
+.dropdown-menu-dark .dropdown-item.active {
+  background-color: var(--navbar-active);
+  color: #fff;
+}
+
+.dropdown-menu-dark .dropdown-divider {
+  border-color: var(--navbar-border);
+}
+
+.dropdown-menu-dark .dropdown-header {
+  color: var(--navbar-active);
+  font-weight: 600;
+}
+
+/* Dropdown Toggle */
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-toggle::after {
+  margin-left: auto;
+  transition: transform var(--transition-speed) ease;
+}
+
+.dropdown-toggle[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+/* Mobile Toggle Button */
+.navbar-toggler {
+  border-color: var(--navbar-active);
+  padding: 0.25rem 0.75rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%234CAF50' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Icon Styling in Navigation */
+.nav-link i,
+.dropdown-item i {
+  width: 1.2rem;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.nav-link:hover i,
+.dropdown-item:hover i {
+  opacity: 1;
+  animation: iconPulse var(--transition-speed) ease;
+}
+
+@keyframes iconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    margin-top: 1rem;
+    border-top: 1px solid var(--navbar-border);
+    padding-top: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 1rem;
+  }
+
+  .nav-link.active::after {
+    left: 0;
+    right: auto;
+    width: 3px;
+    height: 100%;
+    bottom: 0;
+    border-radius: 0;
+  }
+
+  .dropdown-menu {
+    border: none !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none;
+  }
+
+  .dropdown-menu .dropdown-item {
+    padding: 0.75rem 1.5rem !important;
+    border-left: 3px solid transparent;
+    margin-left: -1rem;
+  }
+
+  .dropdown-menu .dropdown-item:hover {
+    border-left-color: var(--navbar-active);
+    background-color: transparent;
+  }
+
+  .dropdown-menu .dropdown-item.active {
+    background-color: transparent;
+    border-left-color: var(--navbar-active);
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tablet View Optimizations */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.5rem !important;
+    margin: 0 0.25rem;
+  }
+
+  .dropdown-menu-dark {
+    position: static !important;
+    float: none;
+    width: 100%;
+    margin-top: 0;
+    padding: 0 !important;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .navbar.bg-dark {
+    background: var(--navbar-bg) !important;
+  }
+
+  .nav-link {
+    color: var(--navbar-text) !important;
+  }
+}
+
+/* Accessibility */
+.navbar-brand:focus,
+.nav-link:focus,
+.dropdown-item:focus {
+  outline: 2px solid var(--navbar-active);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .navbar {
+    display: none;
+  }
+}
+
+/* Animations on Page Load */
+.navbar {
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sticky Navbar Enhancements */
+.navbar.sticky-top {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* User Dropdown Specific Styling */
+#userDropdown {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-menu-end {
+  right: 0;
+  left: auto;
+}
+
+/* Spacing Adjustments */
+.navbar-nav {
+  gap: 0.25rem;
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease;
+}
+
+.navbar * {
+  transition: all var(--transition-speed) ease;
+}

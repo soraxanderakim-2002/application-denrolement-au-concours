@@ -1,0 +1,225 @@
+╔════════════════════════════════════════════════════════════════╗
+║   ENROLL CONCOURS - GUIDE DE DÉMARRAGE RAPIDE                  ║
+║   Plateforme d'inscription aux concours publics du Cameroun    ║
+╚════════════════════════════════════════════════════════════════╝
+
+🎯 DÉMARRAGE EN 3 ÉTAPES
+
+1️⃣ LANCER LE SERVEUR
+   cd /home/codecraft/Desktop/php-enroll-project/enroll-concours
+   php -S localhost:8000
+
+2️⃣ OUVRIR LE NAVIGATEUR
+   http://localhost:8000/index.php
+
+3️⃣ TESTER LE PARCOURS COMPLET
+   - Cliquer "S'inscrire" sur un concours
+   - Remplir le formulaire
+   - Se connecter avec candidat@example.com / password123
+   - Voir le dashboard
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 PAGES DISPONIBLES
+
+PUBLIC (Tous les utilisateurs)
+  ✅ http://localhost:8000/index.php
+     → Page d'accueil avec 4 concours
+  
+  ✅ http://localhost:8000/enroll.php?concours_id=1
+     → Formulaire d'inscription (remplacer 1 par concours_id: 1,2,3,4)
+  
+  ✅ http://localhost:8000/candidate-login.php
+     → Connexion candidat
+     Email: candidat@example.com
+     Mot de passe: password123
+
+CANDIDAT (Après connexion)
+  ✅ http://localhost:8000/candidate-dashboard.php
+     → Dashboard candidat - Voir ses inscriptions
+  
+  ✅ http://localhost:8000/candidate-profile.php
+     → Profil candidat - Éditer infos + avatar
+
+ADMINISTRATEUR (Après connexion)
+  ✅ http://localhost:8000/admin/login.php
+     → Connexion admin (à configurer)
+  
+  ✅ http://localhost:8000/admin/dashboard.php
+     → Dashboard admin - Statistiques
+  
+  ✅ http://localhost:8000/admin/approbations.php
+     → Approbation des candidatures
+  
+  ✅ http://localhost:8000/admin/paiements.php
+     → Gestion des paiements
+  
+  ✅ http://localhost:8000/admin/rapports.php
+     → Rapports et analytics
+  
+  ✅ http://localhost:8000/admin/profile.php
+     → Profil admin
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION
+
+Pour une compréhension rapide:
+  1. Lire TOUR_GUIDE.md
+     → Guide visuel avec schémas ASCII
+
+Pour des détails techniques:
+  2. Lire PUBLIC_PAGES.md
+     → Documentation des 3 pages publiques
+  
+  3. Lire README_COMPLET.md
+     → Guide complet du système entier
+  
+  4. Lire SYSTEM_OVERVIEW.md
+     → Vue d'ensemble et liste des pages
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎓 PARCOURS UTILISATEUR DE TEST
+
+Suivre ce parcours pour tester le système complet:
+
+1. Accueil (index.php)
+   - Voir les 4 concours disponibles
+   - Vérifier les statuts (Ouvert/Bientôt/Fermé)
+
+2. Enrôlement (enroll.php)
+   - Cliquer "S'inscrire" sur CEUP
+   - Remplir tous les champs
+   - Upload 3 documents (PDF/JPEG/PNG - Max 5MB)
+   - Sélectionner méthode paiement
+   - Soumettre
+   - Recevoir numéro référence (ENROLL-XXXXXXX)
+
+3. Connexion (candidate-login.php)
+   - Email: candidat@example.com
+   - Mot de passe: password123
+   - Cliquer "Se Connecter"
+
+4. Dashboard (candidate-dashboard.php)
+   - Voir les inscriptions avec statuts
+   - Voir KPI cards
+
+5. Profil (candidate-profile.php)
+   - Éditer infos (prénom, nom, email, téléphone)
+   - Upload avatar (JPG, PNG, GIF)
+   - Sauvegarder
+
+✅ COMPLET!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 DONNÉES STATIQUES (SANS BASE DE DONNÉES)
+
+Le système fonctionne SANS base de données en mode SIMULATION.
+Toutes les données sont simulées (hardcodées en PHP).
+
+Pour utiliser une BDD MySQL réelle:
+  1. Importer database.sql dans MySQL
+  2. Configurer credentials dans admin/config.php
+  3. Recommenter les fallbacks de données simulées
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 FICHIERS IMPORTANTS
+
+Configuration:
+  → admin/config.php
+    - Classe DB (connexion MySQL)
+    - Classe AdminAuth (authentification)
+    - Fonctions utilitaires
+
+Pages Publiques:
+  → index.php (Accueil)
+  → enroll.php (Enrôlement)
+  → candidate-login.php (Connexion)
+
+Pages Candidat:
+  → candidate-dashboard.php
+  → candidate-profile.php
+
+Pages Admin:
+  → admin/dashboard.php
+  → admin/profile.php
+  → admin/approbations.php
+  → admin/paiements.php
+  → admin/rapports.php
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔐 AUTHENTIFICATION
+
+CANDIDAT:
+  Email: candidat@example.com
+  Mot de passe: password123
+
+ADMINISTRATEUR:
+  À configurer dans admin/login.php
+  (À ce stade, utiliser les identifiants test si nécessaire)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 DESIGN
+
+Couleurs:
+  Primaire: #2c3e50 (Bleu foncé)
+  Accent: #27ae60 (Vert)
+  Warning: #e67e22 (Orange)
+  Danger: #e74c3c (Rouge)
+
+Framework:
+  Bootstrap 5 (local CSS)
+  Bootstrap Icons
+  CSS custom
+
+Responsive:
+  ✅ Desktop (1024px+)
+  ✅ Tablet (768px+)
+  ✅ Mobile (<768px)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 PROCHAIN ÉTAPES (À FAIRE)
+
+- [ ] Intégrer BDD MySQL réelle
+- [ ] Configurer authentification admin/candidat
+- [ ] Implémenter gateway paiement (MTN Money, etc)
+- [ ] Système d'email notifications
+- [ ] Récupération mot de passe
+- [ ] Certificats téléchargeables
+- [ ] Exportation PDF
+- [ ] Chat support live
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 SUPPORT
+
+Pour toute question ou bug:
+  1. Vérifier TOUR_GUIDE.md (guide visuel)
+  2. Consulter PUBLIC_PAGES.md (détails pages)
+  3. Lire README_COMPLET.md (système complet)
+  4. Vérifier admin/config.php (configuration)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ BON DÉVELOPPEMENT!
+
+Créé: Décembre 2025
+Version: 1.0
+Status: Prêt pour test local
+
